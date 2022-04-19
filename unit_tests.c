@@ -98,32 +98,63 @@ bool assert_state_equals(game_state_t* expected, game_state_t* actual) {
 }
 
 bool test_is_tail() {
-  // TODO: Implement this if you'd like!
-  printf("%s\n", "test_is_tail doesn't have any tests.");
+  assert_true("w", is_tail('w'));
+  assert_true("a", is_tail('a'));
+  assert_true("s", is_tail('s'));
+  assert_true("d", is_tail('d'));
+  assert_true("^", !is_tail('^'));
+  assert_true("<", !is_tail('<'));
+  assert_true(">", !is_tail('>'));
+  assert_true("v", !is_tail('v'));
+  assert_true("x", !is_tail('x'));
   return true;
 }
 
 bool test_is_snake() {
-  // TODO: Implement this if you'd like!
-  printf("%s\n", "test_is_snake doesn't have any tests.");
+  assert_true("w", is_snake('w'));
+  assert_true("a", is_snake('a'));
+  assert_true("s", is_snake('s'));
+  assert_true("d", is_snake('d'));
+  assert_true("^", is_snake('^'));
+  assert_true("<", is_snake('<'));
+  assert_true(">", is_snake('>'));
+  assert_true("v", is_snake('v'));
+  assert_true("x", is_snake('x'));
+  assert_true(" ", !is_snake(' '));
+  assert_true("?", !is_snake('?'));
   return true;
 }
 
 bool test_body_to_tail() {
-  // TODO: Implement this if you'd like!
-  printf("%s\n", "test_body_to_tail doesn't have any tests.");
+  assert_equals_char("^", 'w', body_to_tail('^'));
+  assert_equals_char("<", 'a', body_to_tail('<'));
+  assert_equals_char("v", 's', body_to_tail('v'));
+  assert_equals_char(">", 'd', body_to_tail('>'));
+  assert_equals_char(" ", '?', body_to_tail('?'));
   return true;
 }
 
 bool test_incr_x() {
-  // TODO: Implement this if you'd like!
-  printf("%s\n", "test_incr_x doesn't have any tests.");
+  assert_equals_int(">", 1, incr_x('>'));
+  assert_equals_int("d", 1, incr_x('d'));
+  assert_equals_int("<", -1, incr_x('<'));
+  assert_equals_int("a", -1, incr_x('a'));
+  assert_equals_int("v", 0, incr_x('v'));
+  assert_equals_int("s", 0, incr_x('s'));
+  assert_equals_int("^", 0, incr_x('^'));
+  assert_equals_int("w", 0, incr_x('w'));
   return true;
 }
 
 bool test_incr_y() {
-  // TODO: Implement this if you'd like!
-  printf("%s\n", "test_incr_y doesn't have any tests.");
+  assert_equals_int(">", 0, incr_y('>'));
+  assert_equals_int("d", 0, incr_y('d'));
+  assert_equals_int("<", 0, incr_y('<'));
+  assert_equals_int("a", 0, incr_y('a'));
+  assert_equals_int("v", 1, incr_y('v'));
+  assert_equals_int("s", 1, incr_y('s'));
+  assert_equals_int("^", -1, incr_y('^'));
+  assert_equals_int("w", -1, incr_y('w'));
   return true;
 }
 
